@@ -47,7 +47,7 @@ export class JobController {
         document.getElementById('forms').innerHTML = getJobsFormTemplate()
     }
 
-    toggleHouseForm() {
+    toggleJobsForm() {
         document.getElementById('jobs-form').classList.toggle('visually-hidden')
     }
 }
