@@ -17,7 +17,8 @@ export class Job {
             <img src="${this.img}" alt="listing image" class="rounded">
             <div class="card-body">
               <h5 class="d-flex justify-content-between">
-                <span>${this.title} needed! ${this.startdate}</span>
+                <span>${this.title} needed!</span>
+                <span>Needed by ${this.startdate}</span>
                 <span>$${this.pay}/hr</span>
               </h5>
               <p>${this.description}</p>
