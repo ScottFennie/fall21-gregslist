@@ -40,7 +40,7 @@ export class JobController {
     showJobs() {
         _drawJobs()
         document.getElementById('controls').innerHTML = `
-      <button class="btn btn-success" onclick="app.jobsController.toggleJobsForm()">Add Job</button>
+      <button class="btn btn-primary" onclick="app.jobsController.toggleJobsForm()">Add Job</button>
     `
             // TODO build the house form
             // abstract it if you want
