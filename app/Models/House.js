@@ -20,8 +20,8 @@ export class House {
             <img src="${this.img}" alt="listing image" class="rounded">
             <div class="card-body">
               <h5 class="d-flex justify-content-between">
-                <span>${this.size} sqft- ${this.bedrooms} bedroom house</span>
-                <span>$ ${this.price}</span>
+                <span>${this.size} sqft- ${this.bedrooms} bedroom house </span>
+                <span>$${this.price}</span>
               </h5>
               <p>${this.description}</p>
             </div>

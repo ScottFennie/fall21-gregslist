@@ -31,6 +31,11 @@ export class HousesController {
         }
 
         houseService.addHouse(houseData)
+        document.getElementById('house-form').classList.toggle('visually-hidden')
+
+
+
+        form.reset()
     }
 
     showHouses() {
