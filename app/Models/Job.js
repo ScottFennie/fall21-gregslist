@@ -3,25 +3,25 @@ import { generateId } from "../Utils/generateId.js"
 export class Job {
     constructor(jobData) {
         this.id = jobData.id || generateId()
-        this.title = jobData.title
-        this.pay = jobData.pay
+        this.jobTitle = jobData.jobTitle
+        this.rate = jobData.rate
         this.description = jobData.description
-        this.startdate = jobData.startdate
-        this.img = jobData.img
+        this.company = jobData.company
+        this.hours = jobData.hours
     }
 
     get CardTemplate() {
         return /*html*/ `
         <div class="col-lg-3 mb-4 listing">
           <div class="card">
-            <img src="${this.img}" alt="listing image" class="rounded">
             <div class="card-body">
               <h5 class="d-flex justify-content-between">
-                <span>${this.title} needed!</span>
-                <span>Needed by ${this.startdate}</span>
-                <span>$${this.pay}/hr</span>
+                <span>${this.jobTitle} needed for ${this.hours} hours</span>
+                <span>pays $${this.rate}</span>
+                <span>Company:${this.company}</span>
               </h5>
               <p>${this.description}</p>
+              <button class="btn btn-danger" onclick="app.jobsController.deleteJob('${this.id}')">Delete</button>
             </div>
           </div>
         </div>

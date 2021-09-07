@@ -11,25 +11,27 @@ function _drawJobs() {
 export class JobController {
     constructor() {
         ProxyState.on("jobs", _drawJobs)
+        jobService.getJobs()
     }
 
-    addJob() {
+    async addJob() {
         event.preventDefault()
 
         const form = event.target
 
         const jobData = {
-            title: form.title.value,
-            pay: form.pay.value,
-            startdate: form.startdate.value,
+            jobTitle: form.jobTitle.value,
+            rate: form.rate.value,
+            company: form.company.value,
             description: form.description.value,
-            img: form.img.value
+            hours: form.hours.value
 
 
 
         }
 
-        jobService.addJob(jobData)
+        await jobService.addJob(jobData)
+
         document.getElementById('jobs-form').classList.toggle('visually-hidden')
 
 
@@ -49,5 +51,9 @@ export class JobController {
 
     toggleJobsForm() {
         document.getElementById('jobs-form').classList.toggle('visually-hidden')
+    }
+
+    async deleteJob(jobId) {
+        await jobService.deleteJob(jobId)
     }
 }

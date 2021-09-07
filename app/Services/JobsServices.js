@@ -1,15 +1,27 @@
 import { ProxyState } from "../AppState.js"
 import { Job } from "../Models/Job.js"
 
+export const api = axios.create({
+    baseURL: 'https://bcw-sandbox.herokuapp.com/api/jobs'
+})
+
 class JobServices {
 
-    addJob(jobData) {
+    async addJob(jobsData) {
+        let res = await api.post('', jobsData)
+        ProxyState.jobs = [...ProxyState.jobs, new Job(res.data)]
+    }
 
-        console.log("this is the adding job function")
+    async getJobs() {
+        let res = await api.get()
 
-        var testJob = new Job(jobData)
+        ProxyState.jobs = res.data.map(j => new Job(j))
 
-        ProxyState.jobs = [...ProxyState.jobs, testJob]
+    }
+
+    async deleteJob(jobId) {
+        await api.delete(jobId)
+        ProxyState.jobs = ProxyState.jobs.filter(j => j.id !== jobId)
     }
 }
 
