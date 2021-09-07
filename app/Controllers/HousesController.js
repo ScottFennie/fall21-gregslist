@@ -11,26 +11,28 @@ function _drawHouses() {
 export class HousesController {
     constructor() {
         ProxyState.on("houses", _drawHouses)
+        houseService.getHouses()
     }
 
-    addHouse() {
+    async addHouse() {
         event.preventDefault()
 
         const form = event.target
 
         const houseData = {
             bedrooms: form.bedrooms.value,
-            size: form.size.value,
-            floors: form.floors.value,
+            bathrooms: form.bathrooms.value,
+            levels: form.levels.value,
+            year: form.year.value,
             description: form.description.value,
-            img: form.img.value,
+            imgUrl: form.imgUrl.value,
             price: form.price.value
 
 
 
         }
 
-        houseService.addHouse(houseData)
+        await houseService.addHouse(houseData)
         document.getElementById('house-form').classList.toggle('visually-hidden')
 
 
@@ -50,6 +52,9 @@ export class HousesController {
 
     toggleHouseForm() {
         document.getElementById('house-form').classList.toggle('visually-hidden')
+    }
+    async deleteHouse(houseId) {
+        await houseService.deleteHouse(houseId)
     }
 
 }
